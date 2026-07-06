@@ -41,7 +41,7 @@ function PixelTransition({ gridSize = 10, onComplete }) {
         delay: 0.5,
         stagger: { amount: 0.8, from: 'random' }
       });
-  }, []);
+  }, [gridSize, onComplete, colors]);
 
   return (
     <motion.div 

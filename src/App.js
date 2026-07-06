@@ -4,7 +4,7 @@ import PixelTransition from './components/PixelTransition/PixelTransition';
 import CardSwap, { Card } from './components/CardSwap/CardSwap'; // Importation
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ShoppingCart, Search, Gamepad, Monitor, Package, Sparkles, Download, Palette, Ghost, ArrowDown, Check, CreditCard, Send } from 'lucide-react';
+import { ShoppingCart, Search, Gamepad, Monitor, Package, Sparkles, Download, Palette, Ghost, ArrowDown, CreditCard } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const PRODUCTS = [
@@ -70,7 +70,7 @@ const App = () => {
   // Synchroniser les filtres temporaires au chargement de la boutique
   useEffect(() => {
     if (stage === 'browse') setTempFilters(filters);
-  }, [stage]);
+  }, [stage, filters]);
 
   const toggleTempFilter = (category, value) => {
     setTempFilters(prev => {

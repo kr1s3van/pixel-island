@@ -27,7 +27,7 @@ const placeNow = (el, slot) =>
 
 const CardSwap = ({ children, cardDistance = 40, verticalDistance = 50, delay = 4000 }) => {
   const childArr = useMemo(() => Children.toArray(children), [children]);
-  const refs = useMemo(() => childArr.map(() => React.createRef()), [childArr.length]);
+  const refs = useMemo(() => childArr.map(() => React.createRef()), [childArr]);
   const order = useRef(Array.from({ length: childArr.length }, (_, i) => i));
   const container = useRef(null);
 
