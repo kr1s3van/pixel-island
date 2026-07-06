@@ -10,9 +10,13 @@ function PixelTransition({ gridSize = 10, onComplete }) {
   useEffect(() => {
     const pixelGridEl = pixelGridRef.current;
     if (!pixelGridEl) return;
+    
+    // On nettoie la grille
     pixelGridEl.innerHTML = '';
 
-    for (let i = 0; i < gridSize * gridSize; i++) {
+    // On crée les pixels
+    const totalPixels = gridSize * gridSize;
+    for (let i = 0; i < totalPixels; i++) {
       const pixel = document.createElement('div');
       pixel.classList.add('pixel-unit');
       pixel.style.backgroundColor = COLORS_LIST[Math.floor(Math.random() * COLORS_LIST.length)];
@@ -22,19 +26,30 @@ function PixelTransition({ gridSize = 10, onComplete }) {
     const pixels = pixelGridEl.querySelectorAll('.pixel-unit');
     
     const tl = gsap.timeline({
-      onComplete: () => { if (onComplete) onComplete(); }
+      onComplete: () => {
+        if (onComplete) onComplete();
+      }
     });
 
-    tl.set(pixels, { opacity: 0 })
-      .to(pixels, {
-        opacity: 1, duration: 0.1,
-        stagger: { amount: 0.6, from: 'random' }
-      })
-      .to(pixels, {
-        opacity: 0, duration: 0.1, delay: 0.4,
-        stagger: { amount: 0.6, from: 'random' }
-      });
-    
+    // L'ANIMATION
+    tl.to(pixels, {
+      opacity: 1,
+      duration: 0.2,
+      stagger: {
+        amount: 0.7,
+        from: "random"
+      }
+    })
+    .to({}, { duration: 0.3 }) // Pause où l'écran est plein
+    .to(pixels, {
+      opacity: 0,
+      duration: 0.2,
+      stagger: {
+        amount: 0.7,
+        from: "random"
+      }
+    });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gridSize, onComplete]); 
 
