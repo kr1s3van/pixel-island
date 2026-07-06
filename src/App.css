@@ -1,38 +1,310 @@
-.App {
-  text-align: center;
+/* 1. IMPORT DES POLICES */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@400;500;700&display=swap');
+
+/* 2. PALETTE DE COULEURS */
+:root {
+  --mint: #A9E3D8;
+  --cream: #FFFDF5;
+  --horizon: #B9E2F5;
+  --sand: #D8C1A6;
+  --wood: #5C4033;
+  --leaf-green: #73ba9b;
+  --font-pixel: 'Press Start 2P', cursive;
+  --font-main: 'Quicksand', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cream);
+  background-image: radial-gradient(var(--sand) 2px, transparent 2px);
+  background-size: 40px 40px; 
+  background-attachment: fixed; 
+  
+  font-family: var(--font-main);
+  color: var(--wood);
+  overflow-x: hidden;
+}
+
+.app-container::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 150px rgba(92, 64, 51, 0.05);
   pointer-events: none;
+  z-index: 9999;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* 3. LAYOUTS ONBOARDING */
+.onboarding-screen {
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: var(--cream); 
 }
 
-.App-link {
-  color: #61dafb;
+/* 4. BOUTON */
+.btn-island {
+  background-color: var(--mint);
+  color: var(--wood);
+  font-family: var(--font-pixel);
+  font-size: 1rem;
+  border: 4px solid var(--wood);
+  padding: 20px 40px;
+  margin-top: 2rem;
+  transition: all 0.1s active;
+  cursor: pointer;
+  box-shadow: 6px 6px 0px var(--wood); 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-island:hover {
+  background-color: var(--leaf-green);
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px var(--wood);
+}
+
+.btn-island:active {
+  transform: translate(4px, 4px); 
+  box-shadow: none;
+}
+
+/* 5. TAILLES DE TEXTE  */
+.welcome-title {
+  font-family: var(--font-pixel);
+  font-size: 5rem; 
+  line-height: 1.2;
+  color: var(--wood);
+  margin-bottom: 2rem;
+}
+
+.pixel-subtitle {
+  font-family: var(--font-pixel);
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.pixel-text {
+  font-family: var(--font-pixel);
+  font-size: 1rem;
+}
+
+.pixel-text-small {
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+}
+
+/* 6. CARTES D'INTERÊTS */
+.interest-card {
+  background: white;
+  border: 4px solid var(--wood);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  width: 200px;
+  position: relative;
+}
+
+.interest-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background-color: var(--cream);
+  box-shadow: 0 10px 0px var(--sand); 
+}
+
+.interest-card.active {
+  background-color: var(--mint) !important;
+  border-color: var(--wood);
+  transform: translateY(2px); 
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .welcome-title { font-size: 2rem; }
+}
+
+.navbar-brand {
+  font-family: var(--font-pixel) !important;
+  color: var(--cream) !important;
+  text-shadow: 2px 2px 0px var(--wood); 
+  font-size: 1.2rem !important;
+}
+/* --- SIDEBAR NOOK UI --- */
+.sidebar-nook {
+  background-color: var(--cream);
+  border: 4px solid var(--wood);
+  position: sticky;
+  top: 100px;
+}
+
+.nook-check {
+  border: 2px solid var(--wood) !important;
+  border-radius: 0 !important;
+}
+
+.nook-check:checked {
+  background-color: var(--leaf-green) !important;
+  border-color: var(--wood) !important;
+}
+
+/* --- BULLE DE DIALOGUE (Speech Bubble) --- */
+.speech-bubble {
+  background-color: white;
+  border: 4px solid var(--wood);
+  position: relative;
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  left: 30px;
+  bottom: -24px;
+  border-width: 20px 20px 0;
+  border-style: solid;
+  border-color: var(--wood) transparent;
+}
+
+/* --- CARTES PRODUITS & BOUTONS --- */
+.border-2-wood {
+  border: 3px solid var(--wood) !important;
+}
+
+.btn-add {
+  background-color: var(--mint) !important;
+  color: var(--wood) !important;
+  border: 3px solid var(--wood) !important;
+  width: 45px !important;
+  height: 45px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.5rem !important;
+  padding: 0 !important; 
+  line-height: 1 !important; 
+  border-radius: 50% !important;
+}
+
+.btn-add:hover {
+  background-color: var(--leaf-green) !important;
+  transform: scale(1.1);
+}
+
+.featured-section {
+  padding-top: 150px; 
+  height: 450px;
+  margin-top: 100px;    
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.featured-section h5 {
+  margin-bottom: 50px !important;
+  position: relative;
+  z-index: 10;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
+}
+
+.product-card img {
+  height: 180px !important; 
+  width: 100% !important;
+  object-fit: cover !important; 
+  border-bottom: 3px solid var(--wood); 
+}
+
+.product-card .card-body {
+  padding: 15px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+/* --- PANIER ET PAIEMENT (EXIGENCES PDF) --- */
+.checkout-container {
+  background-color: white !important;
+  border: 4px solid var(--wood) !important;
+  max-width: 600px;
+  margin: 80px auto;
+  position: relative;
+  z-index: 10;
+}
+
+.step-indicator {
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  background-color: var(--mint);
+  padding: 5px 15px;
+  display: inline-block;
+  border: 2px solid var(--wood);
+  margin-bottom: 25px;
+}
+
+.nook-input {
+  background-color: var(--cream);
+  border: 3px solid var(--wood);
+  padding: 12px;
+  width: 100%;
+  font-family: var(--font-main);
+  font-weight: bold;
+}
+
+.nook-input:focus {
+  outline: none;
+  background-color: white;
+  border-color: var(--leaf-green);
+}
+
+.border-2-wood {
+  border: 3px solid var(--wood) !important;
+}
+
+/* Fix spacing for Grid */
+.row.g-4 {
+  margin-top: 20px;
+}
+
+/* --- DELIVERY & RATING  --- */
+.delivery-option {
+  flex: 1;
+  padding: 10px;
+  border: 3px solid var(--wood);
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delivery-option.active {
+  background-color: var(--mint);
+  transform: translateY(2px);
+  box-shadow: inset 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.rating-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--wood);
+  background: white;
+  font-family: var(--font-pixel);
+  transition: 0.2s;
+}
+
+.rating-btn.active {
+  background-color: #FFD93D !important; /* Jaune vif quand cliqué */
+  transform: scale(1.2);
+  border-width: 4px;
 }
